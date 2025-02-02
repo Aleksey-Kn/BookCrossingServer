@@ -4,11 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -36,6 +38,8 @@ public class Attachment implements Serializable {
     private Book book;
 
     @Column(length = 3_145_728)
+    @Lob
+    @Type(type = "org.hibernate.type.BinaryType")
     private byte[] data;
 
     private String expansion;
